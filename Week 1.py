@@ -8,9 +8,9 @@ def reverse_integer(x):
     global L
     X = ""
     L = str(x)
-    a = len(L)
+    
     if x > 0:
-        for i in range (a):
+        for i in range (len(L)):
             b = -i -1
             c = L[b]
             X +=c
