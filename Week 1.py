@@ -5,26 +5,19 @@
 
 
 def reverse_integer(x):
-    global L
-    X = ""
+    ans = ""
     L = str(x)
-    
-    if x > 0:
-        for i in range (len(L)):
-            b = -i -1
-            c = L[b]
-            X +=c
-        print(X)
-    else:
-        X += "-"
-        for i in range (a-1):
-            b = -i -1
-            c = L[b]
-            X +=c
-        print(X)
+
+    if x < 0:
+        ans += "-" 
+        L = L[1:]
+    for i in range (len(L)-1,-1, -1):
+        ans += L[i]
+    ans = int(ans)
+    return ans
         
 
-reverse_integer(-123)
+reverse_integer(-1230000)
     
     
 
@@ -33,13 +26,9 @@ reverse_integer(-123)
 
 
 def reverse_string(L):
-    global b
     X =""
-    a = len(L)
-    for i in range(a):
-        b = -i-1
-        c = L[b]
-        X += c
+    for i in range(len(L)-1,-1,-1):
+        X += L[i]
     print(X)
     
 reverse_string("Minh xinh gai qua")
@@ -64,44 +53,27 @@ reverse_string("Minh xinh gai qua")
 # In[65]:
 
 
-def trans_value(x):
-    global A
-    if x =="I":
-        A = 1
-    if x == "V":
-        A = 5
-    if x == "X":
-        A = 10
-    if x == "L":
-        A = 50
-    if x == "C":
-        A = 100
-    if x == "D":
-        A = 500
-    if x == "M":
-        A = 1000
-    return A
+def value(x):
+    Char = ["I", "V", "X","L","C","D","M"]
+    Val = [1,5,10,50,100,500,1000]
+    for i in range(len(Char)):
+        if x == Char[i]:
+            ans = Val[i]
+    return ans 
     
 def trans_roman(X):
-    B = 0
-    C = len(X)
-    global f
-    for i in range (C):
-        d = X[i]
-        d_1 = trans_value(d)
-        if i < (C-1):
-            
-            f = (i +1)
-            e = X[f]
-            
-            e_1 = trans_value(e)
-            if d_1 < e_1:
-                d_1 = -d_1
-            B +=d_1 
+    ans = 0
+    for i in range (len(X)):
+        d = value(X[i])
+        if i < (len(X)-1):
+            e = value(X[i+1])
+            if d < e:
+                d = -d
+            ans += d 
         else:
-            B +=d_1
+            ans +=d
         
-    print (B)
+    print (ans)
         
 trans_roman("MCMXCIV") 
 
